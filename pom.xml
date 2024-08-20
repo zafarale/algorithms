@@ -6,7 +6,19 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>pom</packaging>
   <name>Algorithms</name>
-  <url>http://www.example.com</url>
+  <url>http://github.com/zafarale/algorithms</url>
+  <scm>
+    <connection>scm:git:git@github.com:zafarale/algorithms.git</connection>
+    <developerConnection>scm:git:git@github.com:zafarale/algorithms.git</developerConnection>
+    <url>https://github.com/zafarale/algorithms</url>
+  </scm>
+
+  <distributionManagement>
+    <site>
+      <id>site</id>
+      <url>scm:git:https://github.com/zafarale/algorithms.git</url>
+    </site>
+  </distributionManagement>
   <modules>
     <module>core</module>
   </modules>
@@ -14,11 +26,10 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>21</maven.compiler.source>
     <maven.compiler.target>21</maven.compiler.target>
-    <org.junit.version>5.10.1</org.junit.version>
-    <org.assertj.version>3.25.3</org.assertj.version>
+    <org.junit.version>5.11.0</org.junit.version>
+    <org.assertj.version>3.26.3</org.assertj.version>
     <org.apache.commons.numbers.version>1.1</org.apache.commons.numbers.version>
   </properties>
-
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -30,27 +41,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>com.github.ekryd.sortpom</groupId>
-        <artifactId>sortpom-maven-plugin</artifactId>
-        <version>3.3.0</version>
-        <configuration>
-          <encoding>UTF-8</encoding>
-          <sortDependencies>scope,artifactId</sortDependencies>
-          <sortPlugins>groupId,artifactId</sortPlugins>
-          <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
-          <keepBlankLines>false</keepBlankLines>
-          <keepTimestamp>true</keepTimestamp>
-          <createBackupFile>false</createBackupFile>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
   <profiles>
-
     <profile>
       <id>development</id>
       <activation>
@@ -60,7 +51,6 @@
           <value>development</value>
         </property>
       </activation>
-
       <dependencies>
         <dependency>
           <groupId>org.assertj</groupId>
@@ -84,6 +74,76 @@
           <scope>test</scope>
         </dependency>
       </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>2.17.1</version>
+          </plugin>
+          <plugin>
+            <groupId>com.github.ekryd.sortpom</groupId>
+            <artifactId>sortpom-maven-plugin</artifactId>
+            <version>3.4.1</version>
+            <configuration>
+              <encoding>UTF-8</encoding>
+              <sortDependencies>scope,artifactId</sortDependencies>
+              <sortPlugins>groupId,artifactId</sortPlugins>
+              <sortDependencyExclusions>groupId,artifactId</sortDependencyExclusions>
+              <keepBlankLines>false</keepBlankLines>
+              <keepTimestamp>true</keepTimestamp>
+              <createBackupFile>false</createBackupFile>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-site-plugin</artifactId>
+            <version>3.20.0</version>
+            <!--
+            <dependencies>
+              <dependency>
+                <groupId>org.apache.maven.doxia</groupId>
+                <artifactId>doxia-module-markdown</artifactId>
+                <version>2.0.0-M12</version>
+              </dependency>
+            </dependencies>
+            -->
+          </plugin>
+        </plugins>
+      </build>
+
+      <reporting>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-project-info-reports-plugin</artifactId>
+            <version>3.6.2</version>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-scm-publish-plugin</artifactId>
+            <version>3.3.0</version>
+            <configuration>
+              <scmBranch>gh-pages</scmBranch>
+              <pubScmUrl>git@github.com:zafarale/algorithms.git</pubScmUrl>
+            </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>2.17.1</version>
+            <reportSets>
+              <reportSet>
+                <reports>
+                  <report>dependency-updates-report</report>
+                  <report>plugin-updates-report</report>
+                  <report>property-updates-report</report>
+                </reports>
+              </reportSet>
+            </reportSets>
+          </plugin>
+        </plugins>
+      </reporting>
     </profile>
   </profiles>
 </project>

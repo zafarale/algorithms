@@ -1,0 +1,23 @@
+<project name="algorithms">
+<skin>
+    <groupId>org.apache.maven.skins</groupId>
+    <artifactId>maven-fluido-skin</artifactId>
+    <version>2.0.0-M10</version>
+</skin>
+<custom>
+<fluidoSkin>
+    <profile>(development|pre-release|sandbox|retired)</profile>
+    <topBarEnabled>true</topBarEnabled>
+    <sideBarEnabled>true</sideBarEnabled>
+    <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+    <googleSearch>
+        <sitesearch/>
+    </googleSearch>
+    <gitHub>
+        <projectId>zafarale/algorithms</projectId>
+        <ribbonOrientation>right</ribbonOrientation>
+        <ribbonColor>gray</ribbonColor>
+    </gitHub>
+</fluidoSkin>
+</custom>
+</project>
