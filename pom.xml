@@ -16,7 +16,7 @@
   <distributionManagement>
     <site>
       <id>site</id>
-      <url>scm:git:https://github.com/zafarale/algorithms.git</url>
+      <url>scm:git@github.com:zafarale/algorithms.git</url>
     </site>
   </distributionManagement>
   <modules>
@@ -125,7 +125,7 @@
             <version>3.3.0</version>
             <configuration>
               <scmBranch>gh-pages</scmBranch>
-              <pubScmUrl>git@github.com:zafarale/algorithms.git</pubScmUrl>
+              <pubScmUrl>git@github.com/zafarale/algorithms.git</pubScmUrl>
             </configuration>
           </plugin>
           <plugin>
